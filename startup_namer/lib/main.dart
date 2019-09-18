@@ -33,11 +33,11 @@ class RandomWords extends StatefulWidget {
   State<StatefulWidget> createState() {
     return RandomWordsState();
   }
-
 }
 
 class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
+  final List<WordPair> _suggestions = [];
+  final Set<WordPair> _saved = new Set();
   final _biggerFont = const TextStyle(
       fontSize: 18.0
   );
@@ -46,6 +46,9 @@ class RandomWordsState extends State<RandomWords> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Startup Name Generator!"),
+        actions: <Widget>[
+          new IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved)
+        ],
       ),
       body: _buildSuggestions(),
     );
@@ -55,19 +58,64 @@ class RandomWordsState extends State<RandomWords> {
     return ListView.builder(itemBuilder: (context, i) {
       if (i.isOdd) return Divider();
 
-      final index = 1 ~/ 2;
+      final index = i ~/ 2;
       if (index >= _suggestions.length) {
-        _suggestions.addAll(generateWordPairs().take(10));
+        _suggestions.addAll(generateWordPairs().take(2));
       }
       return _buildRow(_suggestions[index]);
     });
   }
 
   Widget _buildRow(WordPair pair) {
+    final bool _alreadySaved = _saved.contains(pair);
     return ListTile(
       title: Text(
         pair.asPascalCase,
         style: _biggerFont,
+      ),
+      trailing: new Icon(
+        _alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: _alreadySaved ? Colors.red : null
+      ),
+      onTap: () {
+        setState(() {
+          if (_alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
+    );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(
+      new MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          final Iterable<ListTile> tiles = _saved.map(
+                (WordPair pair) {
+              return new ListTile(
+                title: new Text(
+                  pair.asPascalCase,
+                  style: _biggerFont,
+                ),
+              );
+            },
+          );
+          final List<Widget> divided = ListTile.divideTiles(
+            tiles: tiles,
+            context: context,
+          ).toList();
+          return new Scaffold(
+            appBar: AppBar(
+              title: const Text('Saved Suggestions'),
+            ),
+            body: ListView(
+              children: divided,
+            ),
+          );
+        },
       ),
     );
   }

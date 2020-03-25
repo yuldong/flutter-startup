@@ -14,28 +14,28 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   var _currentIndex = 0;
   MessagePage message;
-  // Contacts contacts;
+  Contacts contacts;
   // Personal me;
 
   currentPage() {
-    // switch (_currentIndex) {
-    //   case 0:
-    //     if (message == null) {
-    //       message = Message();
-    //     }
-    //     return message;
-    //   case 1:
-    //     if (contacts == null) {
-    //       contacts = Contacts();
-    //     }
-    //     return contacts;
-    //   case 0:
-    //     if (me == null) {
-    //       me = Personal();
-    //     }
-    //     return me;
-    //   default:
-    // }
+    switch (_currentIndex) {
+      case 0:
+        if (message == null) {
+          message = MessagePage();
+        }
+        return message;
+      case 1:
+        if (contacts == null) {
+          contacts = Contacts();
+        }
+        return contacts;
+      // case 2:
+      //   if (me == null) {
+      //     me = Personal();
+      //   }
+      //   return me;
+      default:
+    }
     if (message == null) {
       message = MessagePage();
     }

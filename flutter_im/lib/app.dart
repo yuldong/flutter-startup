@@ -13,10 +13,9 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   var _currentIndex = 0;
-  // MessagePage message;
+  MessagePage message;
   // Contacts contacts;
   // Personal me;
-  Search sh;
 
   currentPage() {
     // switch (_currentIndex) {
@@ -37,7 +36,10 @@ class AppState extends State<App> {
     //     return me;
     //   default:
     // }
-    return Search();
+    if (message == null) {
+      message = MessagePage();
+    }
+    return message;
   }
 
   _popupMenuItem(String title, {String imagePath, IconData icon}) {

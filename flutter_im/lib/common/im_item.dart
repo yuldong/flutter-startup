@@ -15,7 +15,7 @@ class ImItem extends StatelessWidget {
       onPressed: () {
         switch (title) {
           case '好友动态':
-            Navigator.pushNamed(context, '/friends');
+            Navigator.pushNamed(context, '/friend');
             break;
           case '联系客服':
             break;

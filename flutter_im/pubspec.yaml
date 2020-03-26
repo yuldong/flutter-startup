@@ -56,7 +56,6 @@ flutter:
    - images/icon_public.png
 
    - images/icon_me_clear.png
-   - images/icon_me_file.png
    - images/icon_me_friends.png
    - images/icon_me_messages.png
    - images/icon_me_photo.png
@@ -65,7 +64,7 @@ flutter:
 
    - images/icon_menu_addfriend.png
    - images/icon_menu_group.png
-   - images/icon_menu_scan.png
+   - images/icon_menu_shake.png
    
    - images/loading.png
 

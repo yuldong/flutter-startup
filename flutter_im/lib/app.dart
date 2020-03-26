@@ -15,7 +15,7 @@ class AppState extends State<App> {
   var _currentIndex = 0;
   MessagePage message;
   Contacts contacts;
-  // Personal me;
+  Personal me;
 
   currentPage() {
     switch (_currentIndex) {
@@ -29,11 +29,11 @@ class AppState extends State<App> {
           contacts = Contacts();
         }
         return contacts;
-      // case 2:
-      //   if (me == null) {
-      //     me = Personal();
-      //   }
-      //   return me;
+      case 2:
+        if (me == null) {
+          me = Personal();
+        }
+        return me;
       default:
     }
     if (message == null) {
@@ -87,7 +87,8 @@ class AppState extends State<App> {
                           imagePath: "images/icon_menu_group.png"),
                       _popupMenuItem("添加好友",
                           imagePath: "images/icon_menu_addfriend.png"),
-                      _popupMenuItem("联系客服", icon: Icons.person)
+                      _popupMenuItem("摇一摇",
+                          imagePath: "images/icon_menu_shake.png")
                     ]);
               },
               child: Icon(Icons.add),
@@ -105,47 +106,47 @@ class AppState extends State<App> {
         },
         items: [
           BottomNavigationBarItem(
-              title: Text("聊天",
-                  style: TextStyle(
-                      color: _currentIndex == 0
-                          ? Color(0xFF46c01b)
-                          : Color(0xff999999))),
-              icon: _currentIndex == 0
-                  ? Image.asset('images/message_pressed.png',
-                      width: 32.0, height: 28.0)
-                  : Image.asset(
-                      'images/message_normal.png',
-                      width: 32.0,
-                      height: 28.0,
-                    )),
+            title: Text("聊天",
+                style: TextStyle(
+                    color: _currentIndex == 0
+                        ? Color(0xFF46c01b)
+                        : Color(0xff999999))),
+            icon: Image.asset(
+              'images/message_normal.png',
+              width: 32.0,
+              height: 28.0,
+            ),
+            activeIcon: Image.asset('images/message_pressed.png',
+                width: 32.0, height: 28.0),
+          ),
           BottomNavigationBarItem(
-              title: Text("好友",
-                  style: TextStyle(
-                      color: _currentIndex == 1
-                          ? Color(0xFF46c01b)
-                          : Color(0xff999999))),
-              icon: _currentIndex == 0
-                  ? Image.asset('images/contact_list_pressed.png',
-                      width: 32.0, height: 28.0)
-                  : Image.asset(
-                      'images/contact_list_normal.png',
-                      width: 32.0,
-                      height: 28.0,
-                    )),
+            title: Text("好友",
+                style: TextStyle(
+                    color: _currentIndex == 1
+                        ? Color(0xFF46c01b)
+                        : Color(0xff999999))),
+            icon: Image.asset(
+              'images/contact_list_normal.png',
+              width: 32.0,
+              height: 28.0,
+            ),
+            activeIcon: Image.asset('images/contact_list_pressed.png',
+                width: 32.0, height: 28.0),
+          ),
           BottomNavigationBarItem(
-              title: Text("我的",
-                  style: TextStyle(
-                      color: _currentIndex == 2
-                          ? Color(0xFF46c01b)
-                          : Color(0xff999999))),
-              icon: _currentIndex == 0
-                  ? Image.asset('images/profile_pressed.png',
-                      width: 32.0, height: 28.0)
-                  : Image.asset(
-                      'images/profile_normal.png',
-                      width: 32.0,
-                      height: 28.0,
-                    )),
+            title: Text("我的",
+                style: TextStyle(
+                    color: _currentIndex == 2
+                        ? Color(0xFF46c01b)
+                        : Color(0xff999999))),
+            icon: Image.asset(
+              'images/profile_normal.png',
+              width: 32.0,
+              height: 28.0,
+            ),
+            activeIcon: Image.asset('images/profile_pressed.png',
+                width: 32.0, height: 28.0),
+          ),
         ],
       ),
       body: currentPage(),

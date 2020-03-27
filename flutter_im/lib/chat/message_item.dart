@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'message_data.dart';
 import '../common/touch_callback.dart';
+import 'package:date_format/date_format.dart';
 
 class MessageItem extends StatelessWidget {
   final MessageData message;
@@ -43,7 +44,17 @@ class MessageItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
               ),
-            )
+            ),
+            Container(
+                alignment: AlignmentDirectional.topStart,
+                margin: const EdgeInsets.only(right: 12.0, top: 12.0),
+                child: Text(
+                  formatDate(message.time, [HH, ':', nn, ':', ss]),
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Color(0xFFa9a9a9),
+                  ),
+                )),
           ],
           crossAxisAlignment: CrossAxisAlignment.center,
         ),

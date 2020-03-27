@@ -18,6 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 ## 遇到的问题
 - Text中的title不能为空值
 - 使用Xcode 11.4版本需要切换到master分支
+- 天朝开发记得切换 source
 
 ## 总结
 - flutter 启动入口为main.dart

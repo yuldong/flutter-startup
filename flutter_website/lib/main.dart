@@ -3,10 +3,6 @@ import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
 
 import 'loading.dart';
-import 'provider/current_index_provider.dart';
-import 'provider/product_detail_provider.dart';
-import 'provider/product_provider.dart';
-import 'provider/websocket_provider.dart';
 
 import 'router/application.dart';
 import 'router/routers.dart';

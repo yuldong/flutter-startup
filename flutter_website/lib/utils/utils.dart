@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiver/strings.dart';
 
 Color string2Color(String colorString) {
   int value = 0x00000000;

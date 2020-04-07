@@ -9,6 +9,6 @@ Handler rootHandler = Handler(
 Handler detailsHandler = Handler(
   handlerFunc: (context, parameters) {
     String productId = parameters['productId'].first;
-    return ProductDetailPage();
+    return ProductDetailPage(productId);
   },
 );
